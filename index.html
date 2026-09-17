@@ -129,6 +129,7 @@
     border-bottom-color:var(--surface-2);color:var(--ink);font-weight:700;margin-bottom:-1px}
   .tabs button:focus-visible{outline:2px solid var(--s1);outline-offset:-2px}
   .tabs .lk-ic{font-size:9px;opacity:.7}
+  .tabs button[hidden]{display:none}
   legend .lk-ic{font-size:9px;opacity:.65;margin-left:2px}
   .tabpane[hidden]{display:none}
   .apick{display:flex;align-items:center;gap:8px;padding:12px 18px 0;font-size:11px;color:var(--ink-2)}
@@ -143,6 +144,17 @@
     border-radius:8px;background:var(--surface-2);font-size:10.5px;color:var(--ink-2);line-height:1.6}
   .locknote[hidden]{display:none}
   .ghost.unlocked{border-color:var(--brand);color:var(--brand-deep)}
+
+  /* ---- 折りたたみパネル（明細） ---- */
+  details.fold > summary{font-size:13px;font-weight:700;padding:14px 18px;letter-spacing:.03em;
+    cursor:pointer;display:flex;align-items:center;gap:10px;list-style:none}
+  details.fold > summary::-webkit-details-marker{display:none}
+  details.fold > summary::after{content:'＋';margin-left:auto;font-size:12px;color:var(--ink-3);
+    font-family:var(--mono)}
+  details.fold[open] > summary::after{content:'−'}
+  details.fold[open] > summary{border-bottom:1px solid var(--line)}
+  details.fold > summary:focus-visible{outline:2px solid var(--s1);outline-offset:-2px}
+  .foldhint{font-size:10.5px;font-weight:400;color:var(--ink-3)}
 
   svg{display:block;width:100%;height:auto}
   .chartnote{font-size:10.5px;color:var(--ink-3);padding:0 18px 14px;margin:0}
@@ -266,10 +278,10 @@
         <h2 id="vh">この会場の前提</h2>
         <div class="tabs" role="tablist" aria-label="会場の入力">
           <button type="button" role="tab" id="tb-v1" aria-controls="pn-v1" aria-selected="true">実績</button>
-          <button type="button" role="tab" id="tb-v2" aria-controls="pn-v2" aria-selected="false">率・時間</button>
+          <button type="button" role="tab" id="tb-v2" aria-controls="pn-v2" aria-selected="false" data-internal="1">率・時間</button>
           <button type="button" role="tab" id="tb-v3" aria-controls="pn-v3" aria-selected="false">いまの費用</button>
           <button type="button" role="tab" id="tb-v4" aria-controls="pn-v4" aria-selected="false">当社費用<span class="lk-ic">🔒</span></button>
-          <button type="button" role="tab" id="tb-v5" aria-controls="pn-v5" aria-selected="false">コピー</button>
+          <button type="button" role="tab" id="tb-v5" aria-controls="pn-v5" aria-selected="false" data-internal="1">コピー</button>
         </div>
 
         <div class="bd tabpane" id="pn-v1" role="tabpanel" aria-labelledby="tb-v1">
@@ -296,8 +308,7 @@
         </div>
 
         <div class="bd tabpane" id="pn-v2" role="tabpanel" aria-labelledby="tb-v2" hidden>
-          <p class="paneltop">率と作業時間は <strong>会場ごと</strong> に持っています。同じ値を他の会場にも使うときは「コピー」タブからまとめて反映できます。</p>
-          <div class="locknote lockmsg"><span>🔒</span><span>🔒 の付いたグループ（③ SIRCLE Marketing・④ SIRCLE 準備）は、両システムの導入を前提とした当社側の設定値です。編集するときは画面右上の「当社入力」を押してロックを解除してください。</span></div>
+          <p class="paneltop">このタブは <strong>当社入力のロックを解除したときだけ</strong> 表示されます。率と作業時間は会場ごとに持っていて、同じ値を他の会場にも使うときは「コピー」タブからまとめて反映できます。</p>
           <fieldset>
             <legend><span class="dot" style="background:var(--ink-3)"></span>この会場の共通値</legend>
             <div class="fld"><label for="v_margin">貢献利益率</label><input id="v_margin" type="number" step="1" min="0" max="100"><span class="suf">%</span></div>
@@ -414,7 +425,7 @@
         <div class="apick"><label for="asel">エリア</label><select id="asel" aria-label="エリアを選択"></select></div>
         <div class="tabs" role="tablist" aria-label="葬祭・互助会の入力">
           <button type="button" role="tab" id="tb-a1" aria-controls="pn-a1" aria-selected="true">実績</button>
-          <button type="button" role="tab" id="tb-a2" aria-controls="pn-a2" aria-selected="false">率・時間</button>
+          <button type="button" role="tab" id="tb-a2" aria-controls="pn-a2" aria-selected="false" data-internal="1">率・時間</button>
           <button type="button" role="tab" id="tb-a3" aria-controls="pn-a3" aria-selected="false">いまの費用</button>
           <button type="button" role="tab" id="tb-a4" aria-controls="pn-a4" aria-selected="false">当社費用<span class="lk-ic">🔒</span></button>
         </div>
@@ -438,7 +449,7 @@
         </div>
 
         <div class="bd tabpane" id="pn-a2" role="tabpanel" aria-labelledby="tb-a2" hidden>
-          <p class="paneltop">率と作業時間は <strong>エリアごと</strong> に持っています。</p>
+          <p class="paneltop">このタブは <strong>当社入力のロックを解除したときだけ</strong> 表示されます。率と作業時間はエリアごとに持っています。</p>
           <fieldset>
             <legend><span class="dot" style="background:var(--ink-3)"></span>このエリアの共通値</legend>
             <div class="fld"><label for="a_margin">貢献利益率</label><input id="a_margin" type="number" step="1" min="0" max="100"><span class="suf">%</span></div>
@@ -561,26 +572,26 @@
         <p class="note">現状はABS・ストラテジーサプリ・互助会会員データベースが相互に非連携で、同じ顧客情報を領域ごとに入力し直しています。葬祭SIRCLEと新会員システムに寄せると、この転記が消えます。</p>
       </section>
 
-      <section class="panel">
-        <h2 id="dh">明細｜1会場あたり・年間</h2>
+      <details class="panel fold">
+        <summary><span id="dh">明細｜1会場あたり・年間</span><span class="foldhint">効果とコストの内訳を見る</span></summary>
         <div class="tbwrap">
           <table>
             <thead><tr><th>項目</th><th>前提</th><th>売上インパクト</th><th>利益インパクト</th></tr></thead>
             <tbody id="tb"></tbody>
           </table>
         </div>
-      </section>
+      </details>
 
-      <section class="panel sosai-panel">
-        <h2 id="sdh">明細｜葬祭・互助会（選択エリア）・年間</h2>
-        <div class="dbwarn sosai-off" hidden>この領域はいま試算から外しています。数字は参考表示です。</div>
+      <details class="panel fold sosai-panel">
+        <summary><span id="sdh">明細｜葬祭・互助会（選択エリア）・年間</span><span class="foldhint">効果とコストの内訳を見る</span></summary>
+        <div class="dbwarn sosai-off" hidden style="margin-top:14px">この領域はいま試算から外しています。数字は参考表示です。</div>
         <div class="tbwrap">
           <table>
             <thead><tr><th>項目</th><th>前提</th><th>売上インパクト</th><th>利益インパクト</th></tr></thead>
             <tbody id="stb2"></tbody>
           </table>
         </div>
-      </section>
+      </details>
     </main>
   </div>
 
@@ -588,7 +599,7 @@
     <strong>会場</strong>　メモリード公式サイトの施設一覧をもとにした、福岡4会場・佐賀5会場・長崎5会場の計14会場です。葬祭・互助会は会場単位ではなく、福岡・佐賀・長崎の3エリア単位で置いています。<br>
     <strong>実測にもとづく値</strong>　福岡県のエリア平均 自社HP予約 月13.3件は、FUWEL導入447会場のRAWデータ（2025年9月〜2026年8月）から福岡県29会場を平均したものです。配信承諾率50%・来館→成約率50%は当社「SIRCLE MARKETING 概要書 ver2.1」の収益試算で用いている値。<br>
     <strong>入力の単位</strong>　媒体掲載費・いまのシステム費用・トライスパイドの費用（初期費用を含む）と、施行組数・平均組単価・平均ゲスト数・宴会単価は<strong>会場ごと</strong>に持っています。葬祭・互助会の件数と費用は<strong>エリアごと</strong>。換算率・作業時間（貢献利益率、人件費、来館率・成約率、各工程の削減時間など）も、会場ごと・エリアごとに持っています。会場間で同じ値を使うときは、左パネルの「コピー」タブからまとめて反映できます。<br>
-    <strong>仮置きの値（商談で差し替えてください）</strong>　佐賀県・長崎県のエリア平均 自社HP予約／会場ごとの年間施行組数・平均組単価・平均ゲスト数／葬儀施行件数・互助会加入申込件数・斎場営業所数／1媒体あたりの登録更新時間／自社HP予約の増加率／各工程の削減時間／引出物ECの粗利増／宴会・葬儀の平均単価／貢献利益率／純増とみなす割合。いずれも左の入力欄で変更でき、この端末に保存できます。<br>
+    <strong>仮置きの値（商談で差し替えてください）</strong>　佐賀県・長崎県のエリア平均 自社HP予約／会場ごとの年間施行組数・平均組単価・平均ゲスト数／葬儀施行件数・互助会加入申込件数・斎場営業所数／1媒体あたりの登録更新時間／自社HP予約の増加率／各工程の削減時間／引出物ECの粗利増／宴会・葬儀の平均単価／貢献利益率／純増とみなす割合。いずれも左のパネルで変更できます（エリア平均・トライスパイドの費用・③④の率と削減時間など当社側の設定値は、画面右上の「当社入力」を解除すると編集できます）。入力した値はこの端末に保存できます。<br>
     <strong>ご注意</strong>　本シミュレーターは意思決定の材料としてご提供するものであり、成果を保証するものではありません。システム費用は定価ベースで、初期費用は含みません。複数会場でのご契約には別途プランをご用意しています。
     <span class="pill">株式会社トライスパイド</span>
   </footer>
@@ -1444,6 +1455,7 @@
   ['low','mid','high'].forEach(k => el('sc-'+k).addEventListener('click', ()=>applyScenario(k)));
 
   /* ---------- タブ ---------- */
+  const TABSETS = [];
   function wireTabs(panelId){
     const tabs = [].slice.call(el(panelId).querySelectorAll('[role="tab"]'));
     const show = t => tabs.forEach(o => {
@@ -1458,11 +1470,13 @@
         const d = e.key==='ArrowRight' ? 1 : e.key==='ArrowLeft' ? -1 : 0;
         if(!d) return;
         e.preventDefault();
-        const n = tabs[(i+d+tabs.length)%tabs.length];
-        show(n); n.focus();
+        let j = i;
+        do { j = (j+d+tabs.length)%tabs.length; } while(tabs[j].hidden && j!==i);
+        show(tabs[j]); tabs[j].focus();
       });
     });
     show(tabs[0]);
+    TABSETS.push({tabs:tabs, show:show});
   }
   wireTabs('vpanel'); wireTabs('apanel');
 
@@ -1478,6 +1492,12 @@
       else n.readOnly = !UNLOCKED;
     });
     document.querySelectorAll('.lockmsg').forEach(n => { n.hidden = UNLOCKED; });
+    /* 当社だけが使うタブ（率・時間、コピー）は、ロック中は見せない */
+    document.querySelectorAll('[role="tab"][data-internal]').forEach(n => { n.hidden = !UNLOCKED; });
+    TABSETS.forEach(ts => {
+      const sel = ts.tabs.filter(t => t.getAttribute('aria-selected')==='true')[0];
+      if(sel && sel.hidden) ts.show(ts.tabs.filter(t => !t.hidden)[0]);
+    });
     const b = el('lockbtn');
     b.setAttribute('aria-pressed', String(!UNLOCKED));
     b.classList.toggle('unlocked', UNLOCKED);

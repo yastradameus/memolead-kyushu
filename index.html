@@ -129,6 +129,7 @@
     border-bottom-color:var(--surface-2);color:var(--ink);font-weight:700;margin-bottom:-1px}
   .tabs button:focus-visible{outline:2px solid var(--s1);outline-offset:-2px}
   .tabs .lk-ic{font-size:9px;opacity:.7}
+  legend .lk-ic{font-size:9px;opacity:.65;margin-left:2px}
   .tabpane[hidden]{display:none}
   .apick{display:flex;align-items:center;gap:8px;padding:12px 18px 0;font-size:11px;color:var(--ink-2)}
   .apick select{font-family:var(--jp);font-size:12px;padding:6px 9px;border-radius:8px;
@@ -296,6 +297,7 @@
 
         <div class="bd tabpane" id="pn-v2" role="tabpanel" aria-labelledby="tb-v2" hidden>
           <p class="paneltop">率と作業時間は <strong>会場ごと</strong> に持っています。同じ値を他の会場にも使うときは「コピー」タブからまとめて反映できます。</p>
+          <div class="locknote lockmsg"><span>🔒</span><span>🔒 の付いたグループ（③ SIRCLE Marketing・④ SIRCLE 準備）は、両システムの導入を前提とした当社側の設定値です。編集するときは画面右上の「当社入力」を押してロックを解除してください。</span></div>
           <fieldset>
             <legend><span class="dot" style="background:var(--ink-3)"></span>この会場の共通値</legend>
             <div class="fld"><label for="v_margin">貢献利益率</label><input id="v_margin" type="number" step="1" min="0" max="100"><span class="suf">%</span></div>
@@ -315,8 +317,8 @@
             <div class="fld"><label for="v_close2">来館 → 成約率</label><input id="v_close2" type="number" step="5"><span class="suf">%</span></div>
           </fieldset>
 
-          <fieldset>
-            <legend><span class="dot" style="background:var(--s3)"></span>③ SIRCLE Marketing｜ゲストメルマガ</legend>
+          <fieldset class="lk">
+            <legend><span class="dot" style="background:var(--s3)"></span>③ SIRCLE Marketing｜ゲストメルマガ<span class="lk-ic">🔒</span></legend>
             <div class="fld"><label for="v_consent">配信承諾率</label><input id="v_consent" type="number" step="1"><span class="suf">%</span></div>
             <div class="fld"><label for="v_prospect">結婚期待層の割合</label><input id="v_prospect" type="number" step="1"><span class="suf">%</span></div>
             <div class="fld"><label for="v_visit">DM → 来館率</label><input id="v_visit" type="number" step="0.1"><span class="suf">%</span></div>
@@ -325,8 +327,8 @@
             <div class="hint">DM経由で成約した組のうち、この施策がなければ獲得できなかったと考える割合。残りは「媒体経由でも取れたはず」として売上に数えません。50%なら半分を捨てる、控えめな置き方です。</div>
           </fieldset>
 
-          <fieldset>
-            <legend><span class="dot" style="background:var(--s4)"></span>④ SIRCLE 準備｜打合せ・準備工程</legend>
+          <fieldset class="lk">
+            <legend><span class="dot" style="background:var(--s4)"></span>④ SIRCLE 準備｜打合せ・準備工程<span class="lk-ic">🔒</span></legend>
             <div class="fld"><label for="v_hmtg">打合せ 削減時間</label><input id="v_hmtg" type="number" step="0.5"><span class="suf">h/組</span></div>
             <div class="fld"><label for="v_hmin">議事録・共有 削減時間</label><input id="v_hmin" type="number" step="0.5"><span class="suf">h/組</span></div>
             <div class="fld"><label for="v_hseat">席次表 削減時間</label><input id="v_hseat" type="number" step="0.5"><span class="suf">h/組</span></div>
@@ -646,7 +648,10 @@
   const RATEKEYS = VRATEKEYS.concat(['hpm','uplift']);
   const VKEYS = [].concat(VOLKEYS, VRATEKEYS, COSTKEYS);
   /* 先方には触らせない欄（トライスパイド側で設定する） */
-  const LOCKKEYS = ['v_hpbase'].concat(CKEYS.map(k=>'v_'+k),
+  /* ③ SIRCLE Marketing・④ SIRCLE 準備の率と削減時間は、両システムの導入が前提の値 */
+  const MAKEYS = ['v_consent','v_prospect','v_visit','v_close','v_netnew'];
+  const PREPKEYS = ['v_hmtg','v_hmin','v_hseat','v_ec'];
+  const LOCKKEYS = ['v_hpbase'].concat(MAKEYS, PREPKEYS, CKEYS.map(k=>'v_'+k),
                    ['a_c_sosai','a_c_sosaiu','a_c_member','a_c_sinit']);
 
   const VCOST = {

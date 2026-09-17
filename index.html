@@ -394,10 +394,10 @@
             <div class="fld"><label for="v_c_prep">SIRCLE 準備</label><select id="v_c_prep" class="numsel"></select><span class="suf">万円/月</span></div>
             <div class="fld"><label for="v_c_ma">SIRCLE Marketing</label><select id="v_c_ma" class="numsel"></select><span class="suf">万円/月</span></div>
             <div class="fld"><label for="v_c_prepu">SIRCLE 準備 従量</label><select id="v_c_prepu" class="numsel"></select><span class="suf">万円/組</span></div>
-            <div class="fld"><label for="v_c_inprint">INPRINT 従量</label><select id="v_c_inprint" class="numsel"></select><span class="suf">万円/組</span></div>
             <div class="fld"><label for="v_c_init">初期費用（導入時のみ）</label><select id="v_c_init" class="numsel"></select><span class="suf">万円</span></div>
           </div>
           <div class="hint" style="margin-top:8px">この会場の月額合計 <span class="gsum" id="sum_c">–</span></div>
+          <div class="hint">初期値は全会場に同じ金額を置いています。長崎5会場のTASCUT・FUWELは実際にご契約中のため、実額と違っていても差引には影響しません（現状・導入後の両方に同額を置いて相殺しています）。</div>
           <div class="vcost" id="vcost">–</div>
         </div>
 
@@ -656,7 +656,7 @@
                  'm_mynavi','m_tokihana','m_wnews'];
   const XKEYS = ['x_media','x_cms','x_erp','x_prep','x_ma','x_banq','x_mice','x_prepu'];
   const CKEYS = ['c_tascut','c_fuwel','c_mice','c_erp','c_banq','c_prep','c_ma',
-                 'c_prepu','c_inprint','c_init'];
+                 'c_prepu','c_init'];
   const COSTKEYS = [].concat(MKEYS, XKEYS, CKEYS);   // 会場間でコピーできる費用グループ
   /* 会場ごとの実績値（来館率・成約率は会場によって違うので、ここに置く） */
   const VOLKEYS  = ['weddings','price','guests','media','hpm','hpbase','uplift',
@@ -677,8 +677,8 @@
     m_zexy:0, m_minna:0, m_wpark:0, m_hana_unit:7, m_hana_cnt:0,
     m_mynavi:0, m_tokihana:0, m_wnews:0,
     x_media:0, x_cms:0, x_erp:0, x_prep:0, x_ma:0, x_banq:0, x_mice:0, x_prepu:0,
-    c_tascut:1, c_fuwel:5, c_mice:5, c_erp:20, c_banq:10, c_prep:5, c_ma:5,
-    c_prepu:1, c_inprint:1, c_init:0
+    c_tascut:5, c_fuwel:5, c_mice:3, c_erp:10, c_banq:5, c_prep:0, c_ma:5,
+    c_prepu:1, c_init:0
   };
   const VDEF = v => Object.assign(
     { weddings:v.w, price:300, guests:60, media:v.m, hpm:2.5, hpbase:AMAP[v.p].a,
@@ -730,7 +730,7 @@
     x_mice:MONEY, x_prepu:UNIT,
     /* トライスパイドの費用 */
     c_tascut:MONEY, c_fuwel:MONEY, c_mice:MONEY, c_erp:MONEY, c_banq:MONEY, c_prep:MONEY,
-    c_ma:MONEY, c_prepu:UNIT, c_inprint:UNIT, c_init:[[0,1000,10]],
+    c_ma:MONEY, c_prepu:UNIT, c_init:[[0,1000,10]],
     /* 葬祭・互助会 */
     bases:[[0,100,1]], funerals:[[0,5000,50]], joins:[[0,1000,10]], sprice:[[0,300,5]],
     hsosai:HOURS, hjoin:[[0,10,0.1]], hkeep:HOURS, fup:[[0,20,0.5]],
@@ -851,7 +851,7 @@
       'TASCUT':vp.c_tascut*12, 'FUWEL':vp.c_fuwel*12, 'FUWEL MICE':vp.c_mice*12,
       'SIRCLE 基幹（婚礼）':vp.c_erp*12, 'SIRCLE 基幹（宴会）':vp.c_banq*12,
       'SIRCLE 準備':vp.c_prep*12 + vp.c_prepu*w,
-      'SIRCLE Marketing':vp.c_ma*12, 'INPRINT':vp.c_inprint*w
+      'SIRCLE Marketing':vp.c_ma*12
     };
     const costTotal = Object.values(cost).reduce((a,b)=>a+b,0);
 

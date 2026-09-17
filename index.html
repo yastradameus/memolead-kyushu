@@ -261,8 +261,8 @@
   <div class="kpis">
     <div class="kpi hero"><div class="lab">グループ全体 差引</div>
       <div class="val num" id="k-all">–</div><div class="foot" id="k-allfoot">増える利益 − 増えるコスト</div></div>
-    <div class="kpi"><div class="lab">増える来館</div>
-      <div class="val num" id="k-visits">–</div><div class="foot">年間・婚礼14会場</div></div>
+    <div class="kpi"><div class="lab">増える実来館</div>
+      <div class="val num" id="k-visits">–</div><div class="foot">年間・婚礼14会場（キャンセル後）</div></div>
     <div class="kpi"><div class="lab">増える利益</div>
       <div class="val num" id="k-allprof">–</div><div class="foot">年間・貢献利益率を適用後</div></div>
     <div class="kpi"><div class="lab" id="k-costlab">増えるコスト</div>
@@ -294,6 +294,9 @@
             <div class="fld"><label for="v_price">平均組単価</label><select id="v_price" class="numsel"></select><span class="suf">万円</span></div>
             <div class="fld"><label for="v_guests">平均ゲスト数</label><select id="v_guests" class="numsel"></select><span class="suf">名</span></div>
             <div class="fld"><label for="v_media">契約媒体数</label><select id="v_media" class="numsel"></select><span class="suf">媒体</span></div>
+            <div class="fld"><label for="v_visit2">予約 → 来館率</label><select id="v_visit2" class="numsel"></select><span class="suf">%</span></div>
+            <div class="fld"><label for="v_close2">来館 → 成約率</label><select id="v_close2" class="numsel"></select><span class="suf">%</span></div>
+            <div class="hint" id="v_flow_hint">–</div>
             <div class="fld"><label for="v_banq">新規宴会成約</label><select id="v_banq" class="numsel"></select><span class="suf">件/月</span></div>
             <div class="fld"><label for="v_banqp">宴会の平均単価</label><select id="v_banqp" class="numsel"></select><span class="suf">万円</span></div>
             <div class="fld lk"><label for="v_hpbase">エリア平均 自社HP予約</label><select id="v_hpbase" class="numsel"></select><span class="suf">件/月</span></div>
@@ -327,12 +330,13 @@
           <fieldset>
             <legend><span class="dot" style="background:var(--s2)"></span>② FUWEL｜自社HP集客</legend>
             <div class="fld"><label for="v_uplift">自社HP予約の増加</label><select id="v_uplift" class="numsel"></select><span class="suf">%</span></div>
-            <div class="fld"><label for="v_visit2">予約 → 来館率</label><select id="v_visit2" class="numsel"></select><span class="suf">%</span></div>
-            <div class="fld"><label for="v_close2">来館 → 成約率</label><select id="v_close2" class="numsel"></select><span class="suf">%</span></div>
+            <div class="hint">FUWELの導入で、自社HP経由の来館予約がこれだけ増えると置いています。来館率・成約率は「実績」タブの会場の数字を使います。</div>
           </fieldset>
 
           <fieldset class="lk">
-            <legend><span class="dot" style="background:var(--s3)"></span>③ SIRCLE Marketing｜ゲストメルマガ<span class="lk-ic">🔒</span></legend>
+            <legend><span class="dot" style="background:var(--s3)"></span>③ SIRCLE Marketing<span class="lk-ic">🔒</span></legend>
+            <div class="fld"><label for="v_cancelcut">キャンセル率の削減</label><select id="v_cancelcut" class="numsel"></select><span class="suf">%</span></div>
+            <div class="hint" id="v_cancel_hint">–</div>
             <div class="fld"><label for="v_consent">配信承諾率</label><select id="v_consent" class="numsel"></select><span class="suf">%</span></div>
             <div class="fld"><label for="v_prospect">結婚期待層の割合</label><select id="v_prospect" class="numsel"></select><span class="suf">%</span></div>
             <div class="fld"><label for="v_visit">DM → 来館率</label><select id="v_visit" class="numsel"></select><span class="suf">%</span></div>
@@ -602,7 +606,7 @@
     <strong>会場</strong>　メモリード公式サイトの施設一覧をもとにした、福岡4会場・佐賀5会場・長崎5会場の計14会場です。葬祭・互助会は会場単位ではなく、福岡・佐賀・長崎の3エリア単位で置いています。<br>
     <strong>実測にもとづく値</strong>　福岡県のエリア平均 自社HP予約 月13.3件は、FUWEL導入447会場のRAWデータ（2025年9月〜2026年8月）から福岡県29会場を平均したものです。配信承諾率50%・来館→成約率50%は当社「SIRCLE MARKETING 概要書 ver2.1」の収益試算で用いている値。<br>
     <strong>入力の単位</strong>　媒体掲載費・いまのシステム費用・トライスパイドの費用（初期費用を含む）と、施行組数・平均組単価・平均ゲスト数・宴会単価は<strong>会場ごと</strong>に持っています。葬祭・互助会の件数と費用は<strong>エリアごと</strong>。換算率・作業時間（貢献利益率、人件費、来館率・成約率、各工程の削減時間など）も、会場ごと・エリアごとに持っています。会場間で同じ値を使うときは、左パネルの「コピー」タブからまとめて反映できます。<br>
-    <strong>仮置きの値（商談で差し替えてください）</strong>　佐賀県・長崎県のエリア平均 自社HP予約／会場ごとの年間施行組数・平均組単価・平均ゲスト数／葬儀施行件数・互助会加入申込件数・斎場営業所数／1媒体あたりの登録更新時間／自社HP予約の増加率／各工程の削減時間／引出物ECの粗利増／宴会・葬儀の平均単価／貢献利益率／純増とみなす割合。いずれも左のパネルで変更できます（エリア平均・トライスパイドの費用・③④の率と削減時間など当社側の設定値は、画面右上の「当社入力」を解除すると編集できます）。入力した値はこの端末に保存できます。<br>
+    <strong>仮置きの値（商談で差し替えてください）</strong>　佐賀県・長崎県のエリア平均 自社HP予約／会場ごとの年間施行組数・平均組単価・平均ゲスト数／葬儀施行件数・互助会加入申込件数・斎場営業所数／1媒体あたりの登録更新時間／自社HP予約の増加率／キャンセル率の削減幅／各工程の削減時間／引出物ECの粗利増／宴会・葬儀の平均単価／貢献利益率／純増とみなす割合。いずれも左のパネルで変更できます（エリア平均・トライスパイドの費用・③④の率と削減時間など当社側の設定値は、画面右上の「当社入力」を解除すると編集できます）。入力した値はこの端末に保存できます。<br>
     <strong>ご注意</strong>　本シミュレーターは意思決定の材料としてご提供するものであり、成果を保証するものではありません。システム費用は定価ベースで、初期費用は含みません。複数会場でのご契約には別途プランをご用意しています。
     <span class="pill">株式会社トライスパイド</span>
   </footer>
@@ -642,7 +646,7 @@
   /* 率・時間も会場ごと／エリアごとに持つ（会場で同じになることのほうが少ないため） */
   const VRATE = {
     margin:50, wage:1800,
-    visit2:70, close2:50,
+    cancelcut:10,
     consent:50, prospect:15, visit:2, close:50, netnew:50,
     hmtg:3, hmin:1.5, hseat:2, ec:15000
   };
@@ -654,8 +658,9 @@
   const CKEYS = ['c_tascut','c_fuwel','c_mice','c_erp','c_banq','c_prep','c_ma',
                  'c_prepu','c_inprint','c_init'];
   const COSTKEYS = [].concat(MKEYS, XKEYS, CKEYS);   // 会場間でコピーできる費用グループ
+  /* 会場ごとの実績値（来館率・成約率は会場によって違うので、ここに置く） */
   const VOLKEYS  = ['weddings','price','guests','media','hpm','hpbase','uplift',
-                    'banq','banqp','tascut','fuwel'];
+                    'visit2','close2','banq','banqp','tascut','fuwel'];
   const VRATEKEYS = Object.keys(VRATE);
   const ARATEKEYS = Object.keys(ARATE);
   /* 会場間でコピーできる率・時間（実績値は含めない） */
@@ -663,7 +668,7 @@
   const VKEYS = [].concat(VOLKEYS, VRATEKEYS, COSTKEYS);
   /* 先方には触らせない欄（トライスパイド側で設定する） */
   /* ③ SIRCLE Marketing・④ SIRCLE 準備の率と削減時間は、両システムの導入が前提の値 */
-  const MAKEYS = ['v_consent','v_prospect','v_visit','v_close','v_netnew'];
+  const MAKEYS = ['v_cancelcut','v_consent','v_prospect','v_visit','v_close','v_netnew'];
   const PREPKEYS = ['v_hmtg','v_hmin','v_hseat','v_ec'];
   const LOCKKEYS = ['v_hpbase','i_sosai_on'].concat(MAKEYS, PREPKEYS, CKEYS.map(k=>'v_'+k),
                    ['a_c_sosai','a_c_sosaiu','a_c_member','a_c_sinit']);
@@ -677,7 +682,7 @@
   };
   const VDEF = v => Object.assign(
     { weddings:v.w, price:300, guests:60, media:v.m, hpm:2.5, hpbase:AMAP[v.p].a,
-      uplift:10, banq:1, banqp:30, tascut:v.t, fuwel:v.f },
+      uplift:10, visit2:70, close2:50, banq:1, banqp:30, tascut:v.t, fuwel:v.f },
     VRATE, VCOST);
 
   const ACOST = { x_sosai:0, x_member:0, c_sosai:3, c_sosaiu:0.3, c_member:15, c_sinit:0 };
@@ -690,11 +695,11 @@
                 ['x_sosai','x_member','c_sosai','c_sosaiu','c_member','c_sinit']);
 
   const SCEN = {
-    low: {v:{prospect:15, visit:2, hmtg:3, hmin:1.5, hseat:2,   ec:15000, hpm:2.5, uplift:10, banq:1},
+    low: {v:{prospect:15, visit:2, hmtg:3, hmin:1.5, hseat:2,   ec:15000, hpm:2.5, uplift:10, cancelcut:10, banq:1},
           a:{hsosai:1.5, hjoin:0.3, hkeep:3, fup:1}},
-    mid: {v:{prospect:20, visit:3, hmtg:4, hmin:2,   hseat:2.5, ec:20000, hpm:4,   uplift:20, banq:2},
+    mid: {v:{prospect:20, visit:3, hmtg:4, hmin:2,   hseat:2.5, ec:20000, hpm:4,   uplift:20, cancelcut:20, banq:2},
           a:{hsosai:2,   hjoin:0.5, hkeep:4, fup:2}},
-    high:{v:{prospect:25, visit:5, hmtg:5, hmin:2.5, hseat:3,   ec:25000, hpm:6,   uplift:30, banq:3},
+    high:{v:{prospect:25, visit:5, hmtg:5, hmin:2.5, hseat:3,   ec:25000, hpm:6,   uplift:30, cancelcut:30, banq:3},
           a:{hsosai:3,   hjoin:0.8, hkeep:6, fup:3}}
   };
 
@@ -713,6 +718,7 @@
     hpbase:[[0,20,0.1]],
     /* 率・時間 */
     margin:PCT1, wage:[[800,3000,50]], hpm:HOURS, uplift:PCT5, visit2:PCT5, close2:PCT5,
+    cancelcut:PCT5,
     consent:PCT1, prospect:PCT1, visit:[[0,10,0.1]], close:PCT1, netnew:PCT5,
     hmtg:HOURS, hmin:HOURS, hseat:HOURS, ec:[[0,50000,1000]],
     /* 媒体掲載費 */
@@ -803,13 +809,27 @@
     const prof1 = hrs1 * vp.wage / 10000;
     const rev1 = 0;
 
-    // ② FUWEL：自社HP経由の予約増 → 来館 → 成約
+    /* いまの来館・予約を、年間施行組数と会場の成約率・来館率から逆算する
+       実来館 = 施行組数 ÷ 成約率、来館予約 = 実来館 ÷ 来館率 */
+    const cl = vp.close2/100, vr = vp.visit2/100;
+    const V0 = cl > 0 ? w / cl : 0;          // いまの年間実来館
+    const R0 = vr > 0 ? V0 / vr : 0;         // いまの年間来館予約
+    const canc  = Math.max(0, 1 - vr);       // いまのキャンセル率
+    const canc2 = canc * (1 - vp.cancelcut/100);  // SIRCLE Marketing 導入後
+
+    // ② FUWEL：自社HP経由の予約増 → 実来館 → 成約
     const base2 = vp.hpbase * 12;
-    const add2  = hasF ? 0 : base2 * (vp.uplift/100);
-    const deals2 = add2 * (vp.visit2/100) * (vp.close2/100);
+    const add2  = hasF ? 0 : base2 * (vp.uplift/100);   // 増える来館予約
+    const vis2  = add2 * (1 - canc2);                    // そのうち実際に来館する数
+    const deals2 = vis2 * cl;
     const rev2 = deals2 * vp.price, prof2 = rev2 * m;
 
-    // ③ SIRCLE Marketing：参列ゲストへのDM
+    // ③a SIRCLE Marketing：キャンセル抑止（いまの来館予約すべてに効く）
+    const visC = R0 * (canc - canc2);
+    const dealsC = visC * cl;
+    const revC = dealsC * vp.price, profC = revC * m;
+
+    // ③b SIRCLE Marketing：参列ゲストへのDM
     const list = w * vp.guests * (vp.consent/100);
     const prospects = list * (vp.prospect/100);
     const visits = prospects * (vp.visit/100);
@@ -847,12 +867,13 @@
                  + vp.x_prepu * w;
     const netCost = costTotal - curSys;
 
-    const visitsUp = add2 * (vp.visit2/100) + visits;
-    const dealsUp = deals2 + deals3;
+    const visitsUp = vis2 + visC + visits;
+    const dealsUp = deals2 + dealsC + deals3;
 
-    const rev = rev1+rev2+rev3+rev4+rev5;
-    const prof = prof1+prof2+prof3+prof4+prof5;
-    return {w,hasT,hasF,hrs1,rev1,prof1,base2,add2,deals2,rev2,prof2,
+    const rev = rev1+rev2+revC+rev3+rev4+rev5;
+    const prof = prof1+prof2+profC+prof3+prof4+prof5;
+    return {w,hasT,hasF,hrs1,rev1,prof1,base2,add2,vis2,deals2,rev2,prof2,
+            V0,R0,canc,canc2,visC,dealsC,revC,profC,
             visits,deals3,rev3g,rev3,prof3,hrs4,val4h,val4e,rev4,prof4,rev5,prof5,
             cost,costTotal,mediaCost,curSys,netCost,nMedia,visitsUp,dealsUp,
             rev,prof,net:prof-netCost,
@@ -906,7 +927,7 @@
     const W=560,H=304,L=138,R=26,T0=16,B=36;
     const rows=[['① TASCUT',           T.p1, css('--s1')],
                 ['② FUWEL',            T.p2, css('--s2')],
-                ['③ ゲストメルマガ',   T.p3, css('--s3')],
+                ['③ SIRCLE Marketing', T.p3, css('--s3')],
                 ['④ SIRCLE 準備',      T.p4, css('--s4')],
                 ['⑤ FUWEL MICE',       T.p5, css('--s5')]];
     if(T.son){ rows.push(['⑥ 葬祭SIRCLE', T.p6, css('--s6')],
@@ -914,14 +935,14 @@
     const CL=Math.max(T.cost,0);
     const max=Math.max(CL,...rows.map(d=>d[1]))*1.18||1;
     const x=v=>L+(W-L-R)*v/max;
-    const bh=26, gap=8;
+    const gap=8, rowH=(H-T0-B)/rows.length, bh=Math.min(26, rowH-gap);
     for(let i=0;i<=4;i++){const v=max*i/4;
       mk('line',{x1:x(v),y1:T0,x2:x(v),y2:H-B,stroke:css('--line'),'stroke-width':1},s);
       mk('text',{x:x(v),y:H-B+16,'text-anchor':'middle','font-size':10,
         fill:css('--ink-3'),'font-family':'Jost, sans-serif'},s).textContent=man(v);
     }
     rows.forEach((d,i)=>{
-      const y=T0+i*(bh+gap);
+      const y=T0+i*rowH+(rowH-bh)/2;
       mk('text',{x:0,y:y+bh/2+4,'font-size':10.5,fill:css('--ink-2')},s).textContent=d[0];
       const bw=Math.max(x(d[1])-L,0);
       const g=mk('g',{},s);
@@ -1009,7 +1030,7 @@
     all.forEach(d=>{T.prof+=d.r.prof;T.cost+=d.r.netCost;T.net+=d.r.net;T.w+=VS[d.v.id].weddings;
                     T.vis+=d.r.visitsUp;T.deals+=d.r.dealsUp;T.media+=d.r.mediaCost;
                     T.cur+=d.r.curSys;T.tp+=d.r.costTotal;
-                    T.p1+=d.r.prof1;T.p2+=d.r.prof2;T.p3+=d.r.prof3;
+                    T.p1+=d.r.prof1;T.p2+=d.r.prof2;T.p3+=d.r.prof3+d.r.profC;
                     T.p4+=d.r.prof4;T.p5+=d.r.prof5;});
     el('vtf').innerHTML='<tr class="sum"><td>合計（14会場）</td><td></td>'
       +'<td class="n">'+fmt(T.w)+'</td>'
@@ -1092,11 +1113,19 @@
     const p=VS[VENUES[cur].id];
     const note=(cond,txt)=>cond?' <span style="color:var(--ink-3);font-size:10.5px">'+txt+'</span>':'';
     const rows=[
+      ['<span style="color:var(--ink-3)">いまの来館予約（施行組数から逆算）</span>',
+       '<span style="color:var(--ink-3)">'+fmt(r.R0,0)+' 件/年 → 実来館 '+fmt(r.V0,0)
+       +' 件（キャンセル '+fmt(r.canc*100,1)+'%）</span>', null, null],
       [dot('s1')+'① TASCUT｜重複入稿の削減'+note(r.hasT,'導入済み'),
        r.hasT?'–':fmt(p.media,0)+'媒体 / '+fmt(r.hrs1,0)+' h', null, r.prof1],
-      [dot('s2')+'② FUWEL｜自社HP経由の新規成約'+note(r.hasF,'導入済み'),
-       r.hasF?'–':fmt(r.deals2,1)+' 組', r.rev2, r.prof2],
-      [dot('s3')+'③ ゲストメルマガ経由の新規成約', fmt(r.deals3,1)+' 組', r.rev3, r.prof3],
+      [dot('s2')+'② FUWEL｜自社HP予約の増加'+note(r.hasF,'導入済み'),
+       r.hasF?'–':'予約 +'+fmt(r.add2,1)+' → 実来館 +'+fmt(r.vis2,1)+' → '+fmt(r.deals2,1)+' 組',
+       r.rev2, r.prof2],
+      [dot('s3')+'③ SIRCLE Marketing 小計','', r.revC+r.rev3, r.profC+r.prof3],
+      ['　└ キャンセル抑止（'+fmt(r.canc*100,1)+'% → '+fmt(r.canc2*100,1)+'%）',
+       '実来館 +'+fmt(r.visC,1)+' → '+fmt(r.dealsC,1)+' 組', r.revC, r.profC],
+      ['　└ ゲストメルマガ経由',
+       '来館 +'+fmt(r.visits,1)+' → '+fmt(r.deals3,1)+' 組', r.rev3, r.prof3],
       [dot('s4')+'④ SIRCLE 準備 小計','', r.rev4, r.prof4],
       ['　└ 工数削減','▲'+fmt(p.hmtg+p.hmin+p.hseat,1)+' h/組', r.val4h, r.val4h],
       ['　└ 引出物ECの粗利増','+'+fmt(p.ec/10000,1)+' 万円/組', r.val4e, r.val4e],
@@ -1104,7 +1133,7 @@
     ];
     let h='';
     rows.forEach(x=>{h+='<tr><td>'+x[0]+'</td><td class="n">'+x[1]+'</td><td class="n">'+
-      (x[2]===null?'–':man(x[2]))+'</td><td class="n">'+man(x[3])+'</td></tr>';});
+      (x[2]==null?'–':man(x[2]))+'</td><td class="n">'+(x[3]==null?'–':man(x[3]))+'</td></tr>';});
     h+='<tr class="sum"><td>効果 合計</td><td></td><td class="n">'+man(r.rev)+
        '</td><td class="n">'+man(r.prof)+'</td></tr>';
     Object.entries(r.cost).forEach(([k,v])=>{
@@ -1246,7 +1275,7 @@
     }
     row('年間コスト 合計', man(T.media+nowSys), man(T.media+aftSys),
         '<span style="color:'+(dCost>0?'var(--neg)':'var(--pos)')+'">'+signed(-dCost)+'</span>', 'sum');
-    row('年間 来館数', '<span style="color:var(--ink-3)">現状</span>',
+    row('年間 実来館数', '<span style="color:var(--ink-3)">現状</span>',
         '<span style="color:var(--pos)">＋'+fmt(T.vis,0)+' 件</span>', '＋'+fmt(T.vis,0)+' 件');
     row('年間 成約組数', '<span style="color:var(--ink-3)">現状</span>',
         '<span style="color:var(--pos)">＋'+fmt(T.deals,1)+' 組</span>', '＋'+fmt(T.deals,1)+' 組');
@@ -1281,6 +1310,15 @@
     el('vh').textContent='この会場の前提｜'+v.n;
     el('vlegend').textContent=v.n+'（'+AMAP[v.p].n+'）';
     el('v_area_hint').textContent=AMAP[v.p].pref+'のエリア平均は 月'+fmt(AMAP[v.p].a,1)+'件。'+AMAP[v.p].src+'。';
+    const vp = VS[v.id];
+    el('v_flow_hint').textContent =
+      '年間施行組数 '+fmt(vp.weddings)+'組 ÷ 成約率 '+fmt(vp.close2)+'% ＝ 実来館 '+fmt(r.V0,0)+'件/年。'
+      + 'さらに ÷ 来館率 '+fmt(vp.visit2)+'% ＝ 来館予約 '+fmt(r.R0,0)+'件/年（うちキャンセル '
+      + fmt(r.R0-r.V0,0)+'件・'+fmt(r.canc*100,1)+'%）。この2つの率で、いまの母集団とキャンセルの量が決まります。';
+    el('v_cancel_hint').textContent =
+      'キャンセル率 '+fmt(r.canc*100,1)+'% → '+fmt(r.canc2*100,1)+'%（いまの率から '+fmt(vp.cancelcut)
+      +'% ぶん削減）。リマインドと事前フォローで、いまの来館予約 '+fmt(r.R0,0)+'件のうち '
+      + fmt(r.visC,1)+'件が実来館に変わります。';
     el('ah').textContent='葬祭・互助会の前提｜'+a.n;
     el('dh').textContent='明細｜'+v.n+'・年間';
     el('sdh').textContent='明細｜葬祭・互助会（'+a.n+'）・年間';
@@ -1342,7 +1380,8 @@
   /* 旧バージョンで「共通前提」として保存されていた率・時間を、全会場・全エリアの値として引き継ぐ */
   function applyLegacyGlobal(gd){
     if(!gd) return;
-    VRATEKEYS.forEach(k => { if(typeof gd[k]==='number') VENUES.forEach(v => { VS[v.id][k]=gd[k]; }); });
+    VRATEKEYS.concat(['visit2','close2']).forEach(k => {
+      if(typeof gd[k]==='number') VENUES.forEach(v => { VS[v.id][k]=gd[k]; }); });
     ARATEKEYS.forEach(k => { if(typeof gd[k]==='number') AREAS.forEach(a => { AS[a.id][k]=gd[k]; }); });
   }
 

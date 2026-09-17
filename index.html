@@ -94,7 +94,7 @@
   legend{font-size:11.5px;font-weight:700;color:var(--ink);padding:0;display:flex;
          align-items:center;gap:7px}
   .dot{width:9px;height:9px;border-radius:2px;display:inline-block;flex:0 0 auto}
-  .fld{display:grid;grid-template-columns:1fr 74px 40px;gap:8px;align-items:center;margin-top:9px}
+  .fld{display:grid;grid-template-columns:1fr 88px 40px;gap:8px;align-items:center;margin-top:9px}
   .fld label{font-size:11.5px;color:var(--ink-2);min-width:0;line-height:1.45;overflow-wrap:anywhere}
   .fld input,.fld select{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:13px;
     text-align:right;padding:6px 8px;border:1px solid var(--line-2);border-radius:6px;
@@ -102,6 +102,9 @@
   .fld select{font-family:var(--jp);font-size:11.5px;text-align:left}
   .fld input:focus,.fld select:focus{outline:2px solid var(--s1);outline-offset:1px;border-color:var(--s1)}
   .fld .suf{font-size:10.5px;color:var(--ink-3);text-align:left;margin-left:-2px;white-space:nowrap}
+  /* 金額・時間・率は一覧から選ぶ */
+  .fld select.numsel{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12.5px;
+    text-align:right;padding:6px 4px 6px 7px}
 
   .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
   @media (max-width:1240px){
@@ -287,13 +290,13 @@
         <div class="bd tabpane" id="pn-v1" role="tabpanel" aria-labelledby="tb-v1">
           <fieldset>
             <legend><span class="dot" style="background:var(--brand)"></span><span id="vlegend">会場</span></legend>
-            <div class="fld"><label for="v_weddings">年間施行組数</label><input id="v_weddings" type="number" step="1" min="1"><span class="suf">組</span></div>
-            <div class="fld"><label for="v_price">平均組単価</label><input id="v_price" type="number" step="1"><span class="suf">万円</span></div>
-            <div class="fld"><label for="v_guests">平均ゲスト数</label><input id="v_guests" type="number" step="1"><span class="suf">名</span></div>
-            <div class="fld"><label for="v_media">契約媒体数</label><input id="v_media" type="number" step="1" min="0" max="7"><span class="suf">媒体</span></div>
-            <div class="fld"><label for="v_banq">新規宴会成約</label><input id="v_banq" type="number" step="0.5"><span class="suf">件/月</span></div>
-            <div class="fld"><label for="v_banqp">宴会の平均単価</label><input id="v_banqp" type="number" step="1"><span class="suf">万円</span></div>
-            <div class="fld lk"><label for="v_hpbase">エリア平均 自社HP予約</label><input id="v_hpbase" type="number" step="0.1"><span class="suf">件/月</span></div>
+            <div class="fld"><label for="v_weddings">年間施行組数</label><select id="v_weddings" class="numsel"></select><span class="suf">組</span></div>
+            <div class="fld"><label for="v_price">平均組単価</label><select id="v_price" class="numsel"></select><span class="suf">万円</span></div>
+            <div class="fld"><label for="v_guests">平均ゲスト数</label><select id="v_guests" class="numsel"></select><span class="suf">名</span></div>
+            <div class="fld"><label for="v_media">契約媒体数</label><select id="v_media" class="numsel"></select><span class="suf">媒体</span></div>
+            <div class="fld"><label for="v_banq">新規宴会成約</label><select id="v_banq" class="numsel"></select><span class="suf">件/月</span></div>
+            <div class="fld"><label for="v_banqp">宴会の平均単価</label><select id="v_banqp" class="numsel"></select><span class="suf">万円</span></div>
+            <div class="fld lk"><label for="v_hpbase">エリア平均 自社HP予約</label><select id="v_hpbase" class="numsel"></select><span class="suf">件/月</span></div>
             <div class="hint" id="v_area_hint">–</div>
           </fieldset>
 
@@ -303,7 +306,7 @@
               <select id="v_tascut"><option value="0">未導入</option><option value="1">導入済み</option></select><span class="suf"></span></div>
             <div class="fld"><label for="v_fuwel">FUWEL（自社HP）</label>
               <select id="v_fuwel"><option value="0">未導入</option><option value="1">導入済み</option></select><span class="suf"></span></div>
-            <div class="hint">ここで「導入済み」にした領域だけ、効果がすでに出ているものとして新規の効果から外します。費用も現状・導入後の両方に同額を置くので、差引には影響しません。長崎5会場のTASCUT・FUWELが該当します。<br><strong style="color:var(--ink-2)">長崎も、準備（ONEW領域）・基幹・MAはストラテジーサプリのままです。</strong>④SIRCLE準備・SIRCLE基幹・SIRCLE Marketingは長崎5会場でも新規の効果として計上しています。</div>
+            <div class="hint">ここで「導入済み」にした領域だけ、効果がすでに出ているものとして新規の効果から外します。費用も現状・導入後の両方に同額を置くので、差引には影響しません。長崎5会場のTASCUT・FUWELが該当します。<br><strong style="color:var(--ink-2)">長崎も、結婚式準備・基幹・MAはストラテジーサプリのままです。</strong>④SIRCLE準備・SIRCLE基幹・SIRCLE Marketingは長崎5会場でも新規の効果として計上しています。</div>
           </fieldset>
         </div>
 
@@ -311,67 +314,67 @@
           <p class="paneltop">このタブは <strong>当社入力のロックを解除したときだけ</strong> 表示されます。率と作業時間は会場ごとに持っていて、同じ値を他の会場にも使うときは「コピー」タブからまとめて反映できます。</p>
           <fieldset>
             <legend><span class="dot" style="background:var(--ink-3)"></span>この会場の共通値</legend>
-            <div class="fld"><label for="v_margin">貢献利益率</label><input id="v_margin" type="number" step="1" min="0" max="100"><span class="suf">%</span></div>
-            <div class="fld"><label for="v_wage">人件費（時給）</label><input id="v_wage" type="number" step="50"><span class="suf">円</span></div>
+            <div class="fld"><label for="v_margin">貢献利益率</label><select id="v_margin" class="numsel"></select><span class="suf">%</span></div>
+            <div class="fld"><label for="v_wage">人件費（時給）</label><select id="v_wage" class="numsel"></select><span class="suf">円</span></div>
           </fieldset>
 
           <fieldset>
             <legend><span class="dot" style="background:var(--s1)"></span>① TASCUT｜媒体の登録・更新</legend>
-            <div class="fld"><label for="v_hpm">1媒体あたり登録・更新</label><input id="v_hpm" type="number" step="0.5"><span class="suf">h/月</span></div>
+            <div class="fld"><label for="v_hpm">1媒体あたり登録・更新</label><select id="v_hpm" class="numsel"></select><span class="suf">h/月</span></div>
             <div class="hint">TASCUTで1回に集約できる作業量。媒体数−1ぶんが削減時間になります。</div>
           </fieldset>
 
           <fieldset>
             <legend><span class="dot" style="background:var(--s2)"></span>② FUWEL｜自社HP集客</legend>
-            <div class="fld"><label for="v_uplift">自社HP予約の増加</label><input id="v_uplift" type="number" step="5"><span class="suf">%</span></div>
-            <div class="fld"><label for="v_visit2">予約 → 来館率</label><input id="v_visit2" type="number" step="5"><span class="suf">%</span></div>
-            <div class="fld"><label for="v_close2">来館 → 成約率</label><input id="v_close2" type="number" step="5"><span class="suf">%</span></div>
+            <div class="fld"><label for="v_uplift">自社HP予約の増加</label><select id="v_uplift" class="numsel"></select><span class="suf">%</span></div>
+            <div class="fld"><label for="v_visit2">予約 → 来館率</label><select id="v_visit2" class="numsel"></select><span class="suf">%</span></div>
+            <div class="fld"><label for="v_close2">来館 → 成約率</label><select id="v_close2" class="numsel"></select><span class="suf">%</span></div>
           </fieldset>
 
           <fieldset class="lk">
             <legend><span class="dot" style="background:var(--s3)"></span>③ SIRCLE Marketing｜ゲストメルマガ<span class="lk-ic">🔒</span></legend>
-            <div class="fld"><label for="v_consent">配信承諾率</label><input id="v_consent" type="number" step="1"><span class="suf">%</span></div>
-            <div class="fld"><label for="v_prospect">結婚期待層の割合</label><input id="v_prospect" type="number" step="1"><span class="suf">%</span></div>
-            <div class="fld"><label for="v_visit">DM → 来館率</label><input id="v_visit" type="number" step="0.1"><span class="suf">%</span></div>
-            <div class="fld"><label for="v_close">来館 → 成約率</label><input id="v_close" type="number" step="1"><span class="suf">%</span></div>
-            <div class="fld"><label for="v_netnew">うち純増とみなす割合</label><input id="v_netnew" type="number" step="5"><span class="suf">%</span></div>
+            <div class="fld"><label for="v_consent">配信承諾率</label><select id="v_consent" class="numsel"></select><span class="suf">%</span></div>
+            <div class="fld"><label for="v_prospect">結婚期待層の割合</label><select id="v_prospect" class="numsel"></select><span class="suf">%</span></div>
+            <div class="fld"><label for="v_visit">DM → 来館率</label><select id="v_visit" class="numsel"></select><span class="suf">%</span></div>
+            <div class="fld"><label for="v_close">来館 → 成約率</label><select id="v_close" class="numsel"></select><span class="suf">%</span></div>
+            <div class="fld"><label for="v_netnew">うち純増とみなす割合</label><select id="v_netnew" class="numsel"></select><span class="suf">%</span></div>
             <div class="hint">DM経由で成約した組のうち、この施策がなければ獲得できなかったと考える割合。残りは「媒体経由でも取れたはず」として売上に数えません。50%なら半分を捨てる、控えめな置き方です。</div>
           </fieldset>
 
           <fieldset class="lk">
             <legend><span class="dot" style="background:var(--s4)"></span>④ SIRCLE 準備｜打合せ・準備工程<span class="lk-ic">🔒</span></legend>
-            <div class="fld"><label for="v_hmtg">打合せ 削減時間</label><input id="v_hmtg" type="number" step="0.5"><span class="suf">h/組</span></div>
-            <div class="fld"><label for="v_hmin">議事録・共有 削減時間</label><input id="v_hmin" type="number" step="0.5"><span class="suf">h/組</span></div>
-            <div class="fld"><label for="v_hseat">席次表 削減時間</label><input id="v_hseat" type="number" step="0.5"><span class="suf">h/組</span></div>
-            <div class="fld"><label for="v_ec">引出物EC 粗利増</label><input id="v_ec" type="number" step="1000"><span class="suf">円/組</span></div>
+            <div class="fld"><label for="v_hmtg">打合せ 削減時間</label><select id="v_hmtg" class="numsel"></select><span class="suf">h/組</span></div>
+            <div class="fld"><label for="v_hmin">議事録・共有 削減時間</label><select id="v_hmin" class="numsel"></select><span class="suf">h/組</span></div>
+            <div class="fld"><label for="v_hseat">席次表 削減時間</label><select id="v_hseat" class="numsel"></select><span class="suf">h/組</span></div>
+            <div class="fld"><label for="v_ec">引出物EC 粗利増</label><select id="v_ec" class="numsel"></select><span class="suf">円/組</span></div>
           </fieldset>
         </div>
 
         <div class="bd tabpane" id="pn-v3" role="tabpanel" aria-labelledby="tb-v3" hidden>
           <details class="grp2" open>
             <summary><span class="dot" style="background:var(--neg)"></span>いまの媒体掲載費（この会場・月額）<span class="gsum" id="sum_m">–</span></summary>
-            <div class="fld"><label for="v_m_zexy">ゼクシィ</label><input id="v_m_zexy" type="number" step="1"><span class="suf">万円</span></div>
-            <div class="fld"><label for="v_m_minna">みんなのウェディング</label><input id="v_m_minna" type="number" step="1"><span class="suf">万円</span></div>
-            <div class="fld"><label for="v_m_wpark">ウェディングパーク</label><input id="v_m_wpark" type="number" step="1"><span class="suf">万円</span></div>
-            <div class="fld"><label for="v_m_hana_unit">hanayume 送客単価</label><input id="v_m_hana_unit" type="number" step="0.5"><span class="suf">万円/人</span></div>
-            <div class="fld"><label for="v_m_hana_cnt">hanayume 月間送客数</label><input id="v_m_hana_cnt" type="number" step="1"><span class="suf">人</span></div>
+            <div class="fld"><label for="v_m_zexy">ゼクシィ</label><select id="v_m_zexy" class="numsel"></select><span class="suf">万円</span></div>
+            <div class="fld"><label for="v_m_minna">みんなのウェディング</label><select id="v_m_minna" class="numsel"></select><span class="suf">万円</span></div>
+            <div class="fld"><label for="v_m_wpark">ウェディングパーク</label><select id="v_m_wpark" class="numsel"></select><span class="suf">万円</span></div>
+            <div class="fld"><label for="v_m_hana_unit">hanayume 送客単価</label><select id="v_m_hana_unit" class="numsel"></select><span class="suf">万円/人</span></div>
+            <div class="fld"><label for="v_m_hana_cnt">hanayume 月間送客数</label><select id="v_m_hana_cnt" class="numsel"></select><span class="suf">人</span></div>
             <div class="hint">hanayumeは成果報酬型。単価 × 送客数 が月額になります。月額掲載で契約している場合は、単価に月額を入れて送客数を1にしてください。</div>
-            <div class="fld"><label for="v_m_mynavi">マイナビウエディング</label><input id="v_m_mynavi" type="number" step="1"><span class="suf">万円</span></div>
-            <div class="fld"><label for="v_m_tokihana">トキハナ</label><input id="v_m_tokihana" type="number" step="1"><span class="suf">万円</span></div>
-            <div class="fld"><label for="v_m_wnews">ウェディングニュース</label><input id="v_m_wnews" type="number" step="1"><span class="suf">万円</span></div>
+            <div class="fld"><label for="v_m_mynavi">マイナビウエディング</label><select id="v_m_mynavi" class="numsel"></select><span class="suf">万円</span></div>
+            <div class="fld"><label for="v_m_tokihana">トキハナ</label><select id="v_m_tokihana" class="numsel"></select><span class="suf">万円</span></div>
+            <div class="fld"><label for="v_m_wnews">ウェディングニュース</label><select id="v_m_wnews" class="numsel"></select><span class="suf">万円</span></div>
             <div class="hint">上の「契約媒体数」のぶんだけ、上から順に計上します。媒体掲載費はトライスパイド導入では減りません。規模を並べて見るための欄です。</div>
           </details>
 
           <details class="grp2" open>
             <summary><span class="dot" style="background:var(--ink-3)"></span>いまのシステム費用（この会場・月額）<span class="gsum" id="sum_x">–</span></summary>
-            <div class="fld"><label for="v_x_media">媒体一括管理</label><input id="v_x_media" type="number" step="0.5"><span class="suf">万円</span></div>
-            <div class="fld"><label for="v_x_cms">自社HP CMS</label><input id="v_x_cms" type="number" step="0.5"><span class="suf">万円</span></div>
-            <div class="fld"><label for="v_x_erp">ストラテジーサプリ（婚礼）</label><input id="v_x_erp" type="number" step="0.5"><span class="suf">万円</span></div>
-            <div class="fld"><label for="v_x_prep">婚礼 準備システム（ONEW領域）</label><input id="v_x_prep" type="number" step="0.5"><span class="suf">万円</span></div>
-            <div class="fld"><label for="v_x_ma">マーケティングオートメーション</label><input id="v_x_ma" type="number" step="0.5"><span class="suf">万円</span></div>
-            <div class="fld"><label for="v_x_banq">ストラテジーサプリ（宴会）</label><input id="v_x_banq" type="number" step="0.5"><span class="suf">万円</span></div>
-            <div class="fld"><label for="v_x_mice">宴会予約システム</label><input id="v_x_mice" type="number" step="0.5"><span class="suf">万円</span></div>
-            <div class="fld"><label for="v_x_prepu">婚礼 準備システム 従量</label><input id="v_x_prepu" type="number" step="0.1"><span class="suf">万円/組</span></div>
+            <div class="fld"><label for="v_x_media">媒体一括管理</label><select id="v_x_media" class="numsel"></select><span class="suf">万円</span></div>
+            <div class="fld"><label for="v_x_cms">自社HP CMS</label><select id="v_x_cms" class="numsel"></select><span class="suf">万円</span></div>
+            <div class="fld"><label for="v_x_erp">ストラテジーサプリ（婚礼）</label><select id="v_x_erp" class="numsel"></select><span class="suf">万円</span></div>
+            <div class="fld"><label for="v_x_prep">ストラテジーサプリ（結婚式準備）</label><select id="v_x_prep" class="numsel"></select><span class="suf">万円</span></div>
+            <div class="fld"><label for="v_x_ma">マーケティングオートメーション</label><select id="v_x_ma" class="numsel"></select><span class="suf">万円</span></div>
+            <div class="fld"><label for="v_x_banq">ストラテジーサプリ（宴会）</label><select id="v_x_banq" class="numsel"></select><span class="suf">万円</span></div>
+            <div class="fld"><label for="v_x_mice">宴会予約システム</label><select id="v_x_mice" class="numsel"></select><span class="suf">万円</span></div>
+            <div class="fld"><label for="v_x_prepu">ストラテジーサプリ（結婚式準備）従量</label><select id="v_x_prepu" class="numsel"></select><span class="suf">万円/組</span></div>
             <div class="hint">この会場がいま払っている金額。トライスパイドに置き換わる領域なので、この分だけ導入後のコストから差し引きます。使っていない領域は0のままで構いません。</div>
           </details>
         </div>
@@ -379,16 +382,16 @@
         <div class="bd tabpane" id="pn-v4" role="tabpanel" aria-labelledby="tb-v4" hidden>
           <div class="locknote lockmsg"><span>🔒</span><span>この欄はトライスパイド側で設定します。編集するときは画面右上の「当社入力」を押してロックを解除してください。</span></div>
           <div class="lk">
-            <div class="fld"><label for="v_c_tascut">TASCUT｜媒体一括管理</label><input id="v_c_tascut" type="number" step="0.5"><span class="suf">万円/月</span></div>
-            <div class="fld"><label for="v_c_fuwel">FUWEL｜自社HP CMS</label><input id="v_c_fuwel" type="number" step="0.5"><span class="suf">万円/月</span></div>
-            <div class="fld"><label for="v_c_mice">FUWEL MICE｜宴会集客</label><input id="v_c_mice" type="number" step="0.5"><span class="suf">万円/月</span></div>
-            <div class="fld"><label for="v_c_erp">SIRCLE 基幹（婚礼）</label><input id="v_c_erp" type="number" step="0.5"><span class="suf">万円/月</span></div>
-            <div class="fld"><label for="v_c_banq">SIRCLE 基幹（宴会）</label><input id="v_c_banq" type="number" step="0.5"><span class="suf">万円/月</span></div>
-            <div class="fld"><label for="v_c_prep">SIRCLE 準備</label><input id="v_c_prep" type="number" step="0.5"><span class="suf">万円/月</span></div>
-            <div class="fld"><label for="v_c_ma">SIRCLE Marketing</label><input id="v_c_ma" type="number" step="0.5"><span class="suf">万円/月</span></div>
-            <div class="fld"><label for="v_c_prepu">SIRCLE 準備 従量</label><input id="v_c_prepu" type="number" step="0.1"><span class="suf">万円/組</span></div>
-            <div class="fld"><label for="v_c_inprint">INPRINT 従量</label><input id="v_c_inprint" type="number" step="0.1"><span class="suf">万円/組</span></div>
-            <div class="fld"><label for="v_c_init">初期費用（導入時のみ）</label><input id="v_c_init" type="number" step="10"><span class="suf">万円</span></div>
+            <div class="fld"><label for="v_c_tascut">TASCUT｜媒体一括管理</label><select id="v_c_tascut" class="numsel"></select><span class="suf">万円/月</span></div>
+            <div class="fld"><label for="v_c_fuwel">FUWEL｜自社HP CMS</label><select id="v_c_fuwel" class="numsel"></select><span class="suf">万円/月</span></div>
+            <div class="fld"><label for="v_c_mice">FUWEL MICE｜宴会集客</label><select id="v_c_mice" class="numsel"></select><span class="suf">万円/月</span></div>
+            <div class="fld"><label for="v_c_erp">SIRCLE 基幹（婚礼）</label><select id="v_c_erp" class="numsel"></select><span class="suf">万円/月</span></div>
+            <div class="fld"><label for="v_c_banq">SIRCLE 基幹（宴会）</label><select id="v_c_banq" class="numsel"></select><span class="suf">万円/月</span></div>
+            <div class="fld"><label for="v_c_prep">SIRCLE 準備</label><select id="v_c_prep" class="numsel"></select><span class="suf">万円/月</span></div>
+            <div class="fld"><label for="v_c_ma">SIRCLE Marketing</label><select id="v_c_ma" class="numsel"></select><span class="suf">万円/月</span></div>
+            <div class="fld"><label for="v_c_prepu">SIRCLE 準備 従量</label><select id="v_c_prepu" class="numsel"></select><span class="suf">万円/組</span></div>
+            <div class="fld"><label for="v_c_inprint">INPRINT 従量</label><select id="v_c_inprint" class="numsel"></select><span class="suf">万円/組</span></div>
+            <div class="fld"><label for="v_c_init">初期費用（導入時のみ）</label><select id="v_c_init" class="numsel"></select><span class="suf">万円</span></div>
           </div>
           <div class="hint" style="margin-top:8px">この会場の月額合計 <span class="gsum" id="sum_c">–</span></div>
           <div class="vcost" id="vcost">–</div>
@@ -433,10 +436,10 @@
         <div class="bd tabpane" id="pn-a1" role="tabpanel" aria-labelledby="tb-a1">
           <fieldset>
             <legend><span class="dot" style="background:var(--s6)"></span>このエリアの実績</legend>
-            <div class="fld"><label for="a_bases">斎場・営業所数</label><input id="a_bases" type="number" step="1" min="1"><span class="suf">拠点</span></div>
-            <div class="fld"><label for="a_funerals">年間 葬儀施行件数</label><input id="a_funerals" type="number" step="10"><span class="suf">件/年</span></div>
-            <div class="fld"><label for="a_joins">互助会 新規加入申込</label><input id="a_joins" type="number" step="10"><span class="suf">件/月</span></div>
-            <div class="fld"><label for="a_sprice">葬儀の平均単価</label><input id="a_sprice" type="number" step="1"><span class="suf">万円</span></div>
+            <div class="fld"><label for="a_bases">斎場・営業所数</label><select id="a_bases" class="numsel"></select><span class="suf">拠点</span></div>
+            <div class="fld"><label for="a_funerals">年間 葬儀施行件数</label><select id="a_funerals" class="numsel"></select><span class="suf">件/年</span></div>
+            <div class="fld"><label for="a_joins">互助会 新規加入申込</label><select id="a_joins" class="numsel"></select><span class="suf">件/月</span></div>
+            <div class="fld"><label for="a_sprice">葬儀の平均単価</label><select id="a_sprice" class="numsel"></select><span class="suf">万円</span></div>
             <div class="hint">葬祭・互助会は会場単位ではなくエリア単位で置いています。初期値は仮置きなので、ヒアリング済みの数字に差し替えてください。</div>
           </fieldset>
 
@@ -452,41 +455,41 @@
           <p class="paneltop">このタブは <strong>当社入力のロックを解除したときだけ</strong> 表示されます。率と作業時間はエリアごとに持っています。</p>
           <fieldset>
             <legend><span class="dot" style="background:var(--ink-3)"></span>このエリアの共通値</legend>
-            <div class="fld"><label for="a_margin">貢献利益率</label><input id="a_margin" type="number" step="1" min="0" max="100"><span class="suf">%</span></div>
-            <div class="fld"><label for="a_wage">人件費（時給）</label><input id="a_wage" type="number" step="50"><span class="suf">円</span></div>
+            <div class="fld"><label for="a_margin">貢献利益率</label><select id="a_margin" class="numsel"></select><span class="suf">%</span></div>
+            <div class="fld"><label for="a_wage">人件費（時給）</label><select id="a_wage" class="numsel"></select><span class="suf">円</span></div>
           </fieldset>
 
           <fieldset>
             <legend><span class="dot" style="background:var(--s6)"></span>⑥ 葬祭SIRCLE｜葬祭業務</legend>
-            <div class="fld"><label for="a_hsosai">施行1件あたり 削減時間</label><input id="a_hsosai" type="number" step="0.5"><span class="suf">h/件</span></div>
+            <div class="fld"><label for="a_hsosai">施行1件あたり 削減時間</label><select id="a_hsosai" class="numsel"></select><span class="suf">h/件</span></div>
             <div class="hint">顧客情報の転記、見積作成、パートナーへの受発注、指示書作成。いまはABSと会員システムが非連携のため、同じ情報を複数回入力しています。</div>
           </fieldset>
 
           <fieldset>
             <legend><span class="dot" style="background:var(--s7)"></span>⑦ 互助会会員システム</legend>
-            <div class="fld"><label for="a_hjoin">加入申込1件あたり 削減時間</label><input id="a_hjoin" type="number" step="0.1"><span class="suf">h/件</span></div>
+            <div class="fld"><label for="a_hjoin">加入申込1件あたり 削減時間</label><select id="a_hjoin" class="numsel"></select><span class="suf">h/件</span></div>
             <div class="hint">申込書のAI-OCR読取と不備判定の自動チェックで、営業所の記入確認と本部の審査・差戻し対応が圧縮されます。</div>
-            <div class="fld"><label for="a_hkeep">保全・名寄せ 削減時間</label><input id="a_hkeep" type="number" step="0.5"><span class="suf">h/月・拠点</span></div>
+            <div class="fld"><label for="a_hkeep">保全・名寄せ 削減時間</label><select id="a_hkeep" class="numsel"></select><span class="suf">h/月・拠点</span></div>
             <div class="hint">住所変更・名義書換の手続き、同住所・同姓からの世帯自動名寄せ、音信不通会員のスクリーニング。</div>
-            <div class="fld"><label for="a_fup">会員データ活用の受注増</label><input id="a_fup" type="number" step="0.5"><span class="suf">件/年・拠点</span></div>
+            <div class="fld"><label for="a_fup">会員データ活用の受注増</label><select id="a_fup" class="numsel"></select><span class="suf">件/年・拠点</span></div>
           </fieldset>
         </div>
 
         <div class="bd tabpane" id="pn-a3" role="tabpanel" aria-labelledby="tb-a3" hidden>
           <fieldset>
             <legend><span class="dot" style="background:var(--ink-3)"></span>いまのシステム費用（このエリア）<span class="gsum" id="sum_ax">–</span></legend>
-            <div class="fld"><label for="a_x_sosai">葬祭基幹（ABS等）</label><input id="a_x_sosai" type="number" step="1"><span class="suf">万円/月</span></div>
-            <div class="fld"><label for="a_x_member">互助会会員システム</label><input id="a_x_member" type="number" step="1"><span class="suf">万円/月</span></div>
+            <div class="fld"><label for="a_x_sosai">葬祭基幹（ABS等）</label><select id="a_x_sosai" class="numsel"></select><span class="suf">万円/月</span></div>
+            <div class="fld"><label for="a_x_member">互助会会員システム</label><select id="a_x_member" class="numsel"></select><span class="suf">万円/月</span></div>
           </fieldset>
         </div>
 
         <div class="bd tabpane" id="pn-a4" role="tabpanel" aria-labelledby="tb-a4" hidden>
           <div class="locknote lockmsg"><span>🔒</span><span>この欄はトライスパイド側で設定します。編集するときは画面右上の「当社入力」を押してロックを解除してください。</span></div>
           <div class="lk">
-            <div class="fld"><label for="a_c_sosai">葬祭SIRCLE</label><input id="a_c_sosai" type="number" step="0.5"><span class="suf">万円/月・拠点</span></div>
-            <div class="fld"><label for="a_c_sosaiu">葬祭SIRCLE 従量</label><input id="a_c_sosaiu" type="number" step="0.1"><span class="suf">万円/件</span></div>
-            <div class="fld"><label for="a_c_member">互助会会員システム</label><input id="a_c_member" type="number" step="1"><span class="suf">万円/月</span></div>
-            <div class="fld"><label for="a_c_sinit">初期費用（導入時のみ）</label><input id="a_c_sinit" type="number" step="10"><span class="suf">万円</span></div>
+            <div class="fld"><label for="a_c_sosai">葬祭SIRCLE</label><select id="a_c_sosai" class="numsel"></select><span class="suf">万円/月・拠点</span></div>
+            <div class="fld"><label for="a_c_sosaiu">葬祭SIRCLE 従量</label><select id="a_c_sosaiu" class="numsel"></select><span class="suf">万円/件</span></div>
+            <div class="fld"><label for="a_c_member">互助会会員システム</label><select id="a_c_member" class="numsel"></select><span class="suf">万円/月</span></div>
+            <div class="fld"><label for="a_c_sinit">初期費用（導入時のみ）</label><select id="a_c_sinit" class="numsel"></select><span class="suf">万円</span></div>
           </div>
           <div class="hint" style="margin-top:8px">このエリアの月額合計 <span class="gsum" id="sum_ac">–</span></div>
           <div class="hint">月額・初期費用ともに未確定です。当日のヒアリングで前提が固まったら、この欄と「いまの費用」タブの葬祭基幹（ABS等）を埋めてください。</div>
@@ -697,9 +700,82 @@
 
   const GKEYS = Object.keys(GDEF);
 
+  /* ---------- 入力欄の選択肢（[開始, 終了, 刻み] の組み合わせ） ---------- */
+  const HOURS = [[0,10,0.5],[11,30,1]];          // 時間 h
+  const MONEY = [[0,20,0.5],[21,50,1],[55,100,5],[110,300,10]];  // 月額 万円
+  const UNIT  = [[0,10,0.1]];                    // 従量 万円/組・万円/件
+  const PCT1  = [[0,100,1]];                     // ％（1刻み）
+  const PCT5  = [[0,100,5]];                     // ％（5刻み）
+  const OPT = {
+    /* 会場の実績 */
+    weddings:[[0,300,5],[310,600,10]], price:[[0,600,10]], guests:[[0,200,5]],
+    media:[[0,7,1]], banq:[[0,10,0.5],[11,30,1]], banqp:[[0,200,5]],
+    hpbase:[[0,20,0.1]],
+    /* 率・時間 */
+    margin:PCT1, wage:[[800,3000,50]], hpm:HOURS, uplift:PCT5, visit2:PCT5, close2:PCT5,
+    consent:PCT1, prospect:PCT1, visit:[[0,10,0.1]], close:PCT1, netnew:PCT5,
+    hmtg:HOURS, hmin:HOURS, hseat:HOURS, ec:[[0,50000,1000]],
+    /* 媒体掲載費 */
+    m_zexy:[[0,50,1],[55,300,5]], m_minna:[[0,50,1],[55,300,5]], m_wpark:[[0,50,1],[55,300,5]],
+    m_hana_unit:[[0,20,0.5]], m_hana_cnt:[[0,100,1]],
+    m_mynavi:[[0,50,1],[55,300,5]], m_tokihana:[[0,50,1],[55,300,5]], m_wnews:[[0,50,1],[55,300,5]],
+    /* いまのシステム費用 */
+    x_media:MONEY, x_cms:MONEY, x_erp:MONEY, x_prep:MONEY, x_ma:MONEY, x_banq:MONEY,
+    x_mice:MONEY, x_prepu:UNIT,
+    /* トライスパイドの費用 */
+    c_tascut:MONEY, c_fuwel:MONEY, c_mice:MONEY, c_erp:MONEY, c_banq:MONEY, c_prep:MONEY,
+    c_ma:MONEY, c_prepu:UNIT, c_inprint:UNIT, c_init:[[0,1000,10]],
+    /* 葬祭・互助会 */
+    bases:[[0,100,1]], funerals:[[0,5000,50]], joins:[[0,1000,10]], sprice:[[0,300,5]],
+    hsosai:HOURS, hjoin:[[0,10,0.1]], hkeep:HOURS, fup:[[0,20,0.5]],
+    x_sosai:MONEY, x_member:MONEY,
+    c_sosai:MONEY, c_sosaiu:UNIT, c_member:MONEY, c_sinit:[[0,1000,10]]
+  };
+
   const el = id => document.getElementById(id);
   const inp = k => el('i_'+k);
   const fmt = (v,d=0) => v.toLocaleString('ja-JP',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const optLabel = v => v.toLocaleString('ja-JP',{maximumFractionDigits:3});
+
+  function optValues(segs){
+    const out=[], seen={};
+    segs.forEach(sg => {
+      const a=sg[0], b=sg[1], st=sg[2];
+      for(let i=0; ; i++){
+        const v = Math.round((a + i*st)*1000)/1000;
+        if(v > b + 1e-9) break;
+        if(!seen[v]){ seen[v]=1; out.push(v); }
+      }
+    });
+    return out.sort((x,y)=>x-y);
+  }
+  function fillSelect(id, segs){
+    const n = el(id); if(!n || !segs) return;
+    n.innerHTML = optValues(segs)
+      .map(v => '<option value="'+v+'">'+optLabel(v)+'</option>').join('');
+  }
+  function fillSelects(){
+    VKEYS.forEach(k => fillSelect('v_'+k, OPT[k]));
+    AKEYS.forEach(k => fillSelect('a_'+k, OPT[k]));
+  }
+  /* 一覧にない値（実測値やインポートした値）は、その場で選択肢に足す */
+  function setVal(id, v){
+    const n = el(id); if(!n) return;
+    const sv = String(v);
+    if(n.tagName==='SELECT'){
+      const opts = n.options;
+      let found = false;
+      for(let i=0;i<opts.length;i++){ if(opts[i].value===sv){ found=true; break; } }
+      if(!found){
+        const o = document.createElement('option');
+        o.value = sv; o.textContent = optLabel(Number(v));
+        let at = null;
+        for(let i=0;i<opts.length;i++){ if(Number(opts[i].value) > Number(v)){ at = opts[i]; break; } }
+        n.insertBefore(o, at);
+      }
+    }
+    n.value = sv;
+  }
   const man = v => fmt(Math.round(v));
   /* 万円 → 1億円以上なら億円表記にする */
   function money(v){
@@ -1213,7 +1289,7 @@
   /* ---------- form <-> state ---------- */
   function loadVenue(){
     const p = VS[VENUES[cur].id];
-    VKEYS.forEach(k => el('v_'+k).value = p[k]);
+    VKEYS.forEach(k => setVal('v_'+k, p[k]));
     el('vmsg').textContent = SAVED[VENUES[cur].id] ? '保存済みの値を読み込みました' : '初期値を表示しています';
     render();
   }
@@ -1237,7 +1313,7 @@
   }
   function loadArea(){
     const p = AS[AREAS[acur].id];
-    AKEYS.forEach(k => el('a_'+k).value = p[k]);
+    AKEYS.forEach(k => setVal('a_'+k, p[k]));
     el('amsg').textContent = ASAVED[AREAS[acur].id] ? '保存済みの値を読み込みました' : '初期値を表示しています';
     render();
   }
@@ -1432,17 +1508,16 @@
   el('asel').innerHTML = AREAS.map((a,i)=>'<option value="'+i+'">'+a.n+'エリア</option>').join('');
   el('vsel').addEventListener('change', ()=>{ cur=+el('vsel').value; loadVenue(); });
   el('asel').addEventListener('change', ()=>{ acur=+el('asel').value; loadArea(); });
-  VKEYS.forEach(k => { const n = el('v_'+k);
-    n.addEventListener(n.tagName==='SELECT'?'change':'input',
-      ()=>{ clearScenario(); readVenue(); render(); }); });
-  AKEYS.forEach(k => el('a_'+k).addEventListener('input', ()=>{ readArea(); render(); }));
+  VKEYS.forEach(k => el('v_'+k)
+    .addEventListener('change', ()=>{ clearScenario(); readVenue(); render(); }));
+  AKEYS.forEach(k => el('a_'+k)
+    .addEventListener('change', ()=>{ clearScenario(); readArea(); render(); }));
   GKEYS.forEach(k => {
     const n = inp(k);
     const ev = n.tagName==='SELECT' ? 'change' : 'input';
     n.addEventListener(ev, ()=>{ readGlobal(); render(); });
   });
-  AKEYS.forEach(k => { const n = el('a_'+k);
-    if(n.tagName==='SELECT') n.addEventListener('change', ()=>{ clearScenario(); readArea(); render(); }); });
+
   el('reset').addEventListener('click', ()=>{
     G=Object.assign({},GDEF);
     VENUES.forEach(v => { VS[v.id]=VDEF(v); });
@@ -1514,6 +1589,7 @@
   applyLock();
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change', render);
 
+  fillSelects();
   loadGlobal(); loadArea(); loadVenue();
   initStore();
 })();

@@ -443,11 +443,11 @@
             <div class="hint">葬祭・互助会は会場単位ではなくエリア単位で置いています。初期値は仮置きなので、ヒアリング済みの数字に差し替えてください。</div>
           </fieldset>
 
-          <fieldset>
-            <legend><span class="dot" style="background:var(--s6)"></span>この領域を試算に含めるか</legend>
+          <fieldset class="lk">
+            <legend><span class="dot" style="background:var(--s6)"></span>この領域を試算に含めるか<span class="lk-ic">🔒</span></legend>
             <div class="fld"><label for="i_sosai_on">葬祭・互助会</label>
               <select id="i_sosai_on"><option value="1">含める</option><option value="0">いったん外す</option></select><span class="suf"></span></div>
-            <div class="hint">ABS（顧客管理）の現状費用と、置き換え後の月額・初期費用が固まるまでは「いったん外す」にしておけます。外すと、上のKPIと全体表から葬祭・互助会が抜け、婚礼・宴会14会場だけの数字になります。当日ヒアリングで数字が入ったら「含める」に戻してください。</div>
+            <div class="hint">ABS（顧客管理）の現状費用と、置き換え後の月額・初期費用が固まるまでは「いったん外す」で固定しています。上のKPIと全体表は、婚礼・宴会14会場だけの数字です。当日のヒアリングで数字が入ったら、画面右上の「当社入力」を解除して「含める」に切り替えてください。</div>
           </fieldset>
         </div>
 
@@ -638,7 +638,7 @@
 
   /* ---------- 前提の初期値 ---------- */
   /* 全体で持つのは、表示の切り替えだけ */
-  const GDEF = { sosai_on:1 };
+  const GDEF = { sosai_on:0 };
   /* 率・時間も会場ごと／エリアごとに持つ（会場で同じになることのほうが少ないため） */
   const VRATE = {
     margin:50, wage:1800,
@@ -665,7 +665,7 @@
   /* ③ SIRCLE Marketing・④ SIRCLE 準備の率と削減時間は、両システムの導入が前提の値 */
   const MAKEYS = ['v_consent','v_prospect','v_visit','v_close','v_netnew'];
   const PREPKEYS = ['v_hmtg','v_hmin','v_hseat','v_ec'];
-  const LOCKKEYS = ['v_hpbase'].concat(MAKEYS, PREPKEYS, CKEYS.map(k=>'v_'+k),
+  const LOCKKEYS = ['v_hpbase','i_sosai_on'].concat(MAKEYS, PREPKEYS, CKEYS.map(k=>'v_'+k),
                    ['a_c_sosai','a_c_sosaiu','a_c_member','a_c_sinit']);
 
   const VCOST = {
@@ -1182,7 +1182,9 @@
 
     const mAll = money(gNet);
     el('k-all').innerHTML=(gNet>=0?'＋':'▲')+mAll.n.replace('-','')+'<span class="unit">'+mAll.u+'</span>';
-    el('k-allfoot').textContent='婚礼・宴会 '+man(T.net)+' ／ 葬祭・互助会 '+man(S.net);
+    el('k-allfoot').textContent = SON
+      ? '婚礼・宴会 '+man(T.net)+' ／ 葬祭・互助会 '+man(S.net)
+      : '婚礼・宴会14会場のみ（葬祭・互助会は試算に含めていません）';
     el('k-visits').innerHTML=fmt(T.vis,0)+'<span class="unit">件</span>';
     const mProf = money(gProf);
     el('k-allprof').innerHTML=mProf.n+'<span class="unit">'+mProf.u+'</span>';

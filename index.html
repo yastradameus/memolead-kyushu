@@ -299,6 +299,18 @@
             <div class="hint" id="v_flow_hint">–</div>
             <div class="fld"><label for="v_banq">新規宴会成約</label><select id="v_banq" class="numsel"></select><span class="suf">件/月</span></div>
             <div class="fld"><label for="v_banqp">宴会の平均単価</label><select id="v_banqp" class="numsel"></select><span class="suf">万円</span></div>
+          </fieldset>
+
+          <fieldset>
+            <legend><span class="dot" style="background:var(--s4)"></span>いまの運用にかかっている時間</legend>
+            <p class="paneltop">いまの運用で <strong>実際にかかっている時間</strong> を入れてください。ここが大きいほど、導入後に生まれる余力（＝利益）も大きくなります。</p>
+            <div class="fld"><label for="v_hpm">フェア更新時間</label><select id="v_hpm" class="numsel"></select><span class="suf">h/月</span></div>
+            <div class="hint">1媒体あたり、1か月にかかっている時間です。全フェアの更新に加えて、お客様とのメールのやり取り、キャンセル処理、残席変更を含みます。TASCUTは全媒体をまとめて1回で更新できるので、契約媒体数−1ぶんがそのまま削減時間になります。</div>
+            <div class="fld"><label for="v_hmtg">打合せ 所要時間</label><select id="v_hmtg" class="numsel"></select><span class="suf">h/組</span></div>
+            <div class="fld"><label for="v_hmin">議事録・共有 所要時間</label><select id="v_hmin" class="numsel"></select><span class="suf">h/組</span></div>
+            <div class="fld"><label for="v_hseat">席次表作成 所要時間</label><select id="v_hseat" class="numsel"></select><span class="suf">h/組</span></div>
+            <div class="hint">1組を施行するまでに、いまのストラテジーサプリと手作業でかかっている時間です。打合せ本体、議事録の作成と社内・お客様への共有、席次表の作成と修正のやり取りを、それぞれ合計で入れてください。</div>
+            <div class="hint" id="v_prep_hint">–</div>
             <div class="fld lk"><label for="v_hpbase">エリア平均 自社HP予約</label><select id="v_hpbase" class="numsel"></select><span class="suf">件/月</span></div>
             <div class="hint" id="v_area_hint">–</div>
           </fieldset>
@@ -321,16 +333,11 @@
             <div class="fld"><label for="v_wage">人件費（時給）</label><select id="v_wage" class="numsel"></select><span class="suf">円</span></div>
           </fieldset>
 
-          <fieldset>
-            <legend><span class="dot" style="background:var(--s1)"></span>① TASCUT｜媒体の登録・更新</legend>
-            <div class="fld"><label for="v_hpm">1媒体あたり登録・更新</label><select id="v_hpm" class="numsel"></select><span class="suf">h/月</span></div>
-            <div class="hint">TASCUTで1回に集約できる作業量。媒体数−1ぶんが削減時間になります。</div>
-          </fieldset>
-
-          <fieldset>
-            <legend><span class="dot" style="background:var(--s2)"></span>② FUWEL｜自社HP集客</legend>
-            <div class="fld"><label for="v_uplift">自社HP予約の増加</label><select id="v_uplift" class="numsel"></select><span class="suf">%</span></div>
-            <div class="hint">FUWELの導入で、自社HP経由の来館予約がこれだけ増えると置いています。来館率・成約率は「実績」タブの会場の数字を使います。</div>
+          <fieldset class="lk">
+            <legend><span class="dot" style="background:var(--s2)"></span>② FUWEL｜自社HP集客<span class="lk-ic">🔒</span></legend>
+            <div class="fld"><label for="v_uplift">FUWEL導入後の来館予約 上昇率</label><select id="v_uplift" class="numsel"></select><span class="suf">%</span></div>
+            <div class="hint" id="v_uplift_hint">–</div>
+            <div class="hint"><strong style="color:var(--ink-2)">FUWELを導入したことで自社HP経由の来館予約がどれだけ伸びるか</strong>の比率です。媒体経由の予約は含みません。予約がそのまま成約になるわけではなく、この先は「実績」タブの予約→来館率・来館→成約率を通して成約数に換算します。</div>
           </fieldset>
 
           <fieldset class="lk">
@@ -347,9 +354,9 @@
 
           <fieldset class="lk">
             <legend><span class="dot" style="background:var(--s4)"></span>④ SIRCLE 準備｜打合せ・準備工程<span class="lk-ic">🔒</span></legend>
-            <div class="fld"><label for="v_hmtg">打合せ 削減時間</label><select id="v_hmtg" class="numsel"></select><span class="suf">h/組</span></div>
-            <div class="fld"><label for="v_hmin">議事録・共有 削減時間</label><select id="v_hmin" class="numsel"></select><span class="suf">h/組</span></div>
-            <div class="fld"><label for="v_hseat">席次表 削減時間</label><select id="v_hseat" class="numsel"></select><span class="suf">h/組</span></div>
+            <div class="fld"><label for="v_prepcut">準備工程の削減率</label><select id="v_prepcut" class="numsel"></select><span class="suf">%</span></div>
+            <div class="hint" id="v_prep_hint2">–</div>
+            <div class="hint">「実績」タブに入れた、いまストラテジーサプリと手作業でかかっている時間のうち、SIRCLE 準備でどれだけ短縮できるかの割合です。打合せ内容の自動反映、議事録の自動生成と共有、席次表の自動組版で圧縮できる分を置いています。</div>
             <div class="fld"><label for="v_ec">引出物EC 粗利増</label><select id="v_ec" class="numsel"></select><span class="suf">円/組</span></div>
           </fieldset>
         </div>
@@ -648,7 +655,7 @@
     margin:50, wage:1800,
     cancelcut:10,
     consent:50, prospect:15, visit:2, close:50, netnew:50,
-    hmtg:3, hmin:1.5, hseat:2, ec:15000
+    prepcut:30, ec:15000
   };
   const ARATE = { margin:50, wage:1800, hsosai:2, hjoin:0.5, hkeep:4, fup:2, sprice:80 };
   /* 金額・媒体・契約条件は会場ごとに持つ */
@@ -659,17 +666,17 @@
                  'c_prepu','c_init'];
   const COSTKEYS = [].concat(MKEYS, XKEYS, CKEYS);   // 会場間でコピーできる費用グループ
   /* 会場ごとの実績値（来館率・成約率は会場によって違うので、ここに置く） */
-  const VOLKEYS  = ['weddings','price','guests','media','hpm','hpbase','uplift',
-                    'visit2','close2','banq','banqp','tascut','fuwel'];
+  const VOLKEYS  = ['weddings','price','guests','media','hpm','hmtg','hmin','hseat',
+                    'hpbase','uplift','visit2','close2','banq','banqp','tascut','fuwel'];
   const VRATEKEYS = Object.keys(VRATE);
   const ARATEKEYS = Object.keys(ARATE);
   /* 会場間でコピーできる率・時間（実績値は含めない） */
-  const RATEKEYS = VRATEKEYS.concat(['hpm','uplift']);
+  const RATEKEYS = VRATEKEYS.concat(['uplift']);
   const VKEYS = [].concat(VOLKEYS, VRATEKEYS, COSTKEYS);
   /* 先方には触らせない欄（トライスパイド側で設定する） */
   /* ③ SIRCLE Marketing・④ SIRCLE 準備の率と削減時間は、両システムの導入が前提の値 */
   const MAKEYS = ['v_cancelcut','v_consent','v_prospect','v_visit','v_close','v_netnew'];
-  const PREPKEYS = ['v_hmtg','v_hmin','v_hseat','v_ec'];
+  const PREPKEYS = ['v_prepcut','v_ec','v_uplift'];
   const LOCKKEYS = ['v_hpbase','i_sosai_on'].concat(MAKEYS, PREPKEYS, CKEYS.map(k=>'v_'+k),
                    ['a_c_sosai','a_c_sosaiu','a_c_member','a_c_sinit']);
 
@@ -681,7 +688,8 @@
     c_prepu:1, c_init:0
   };
   const VDEF = v => Object.assign(
-    { weddings:v.w, price:300, guests:60, media:v.m, hpm:2.5, hpbase:AMAP[v.p].a,
+    { weddings:v.w, price:300, guests:60, media:v.m, hpm:6, hmtg:16, hmin:4, hseat:4,
+      hpbase:AMAP[v.p].a,
       uplift:10, visit2:70, close2:50, banq:1, banqp:30, tascut:v.t, fuwel:v.f },
     VRATE, VCOST);
 
@@ -695,11 +703,11 @@
                 ['x_sosai','x_member','c_sosai','c_sosaiu','c_member','c_sinit']);
 
   const SCEN = {
-    low: {v:{prospect:15, visit:2, hmtg:3, hmin:1.5, hseat:2,   ec:15000, hpm:2.5, uplift:10, cancelcut:10, banq:1},
+    low: {v:{prospect:15, visit:2, prepcut:30, ec:15000, uplift:10, cancelcut:10, banq:1},
           a:{hsosai:1.5, hjoin:0.3, hkeep:3, fup:1}},
-    mid: {v:{prospect:20, visit:3, hmtg:4, hmin:2,   hseat:2.5, ec:20000, hpm:4,   uplift:20, cancelcut:20, banq:2},
+    mid: {v:{prospect:20, visit:3, prepcut:40, ec:20000, uplift:20, cancelcut:20, banq:2},
           a:{hsosai:2,   hjoin:0.5, hkeep:4, fup:2}},
-    high:{v:{prospect:25, visit:5, hmtg:5, hmin:2.5, hseat:3,   ec:25000, hpm:6,   uplift:30, cancelcut:30, banq:3},
+    high:{v:{prospect:25, visit:5, prepcut:50, ec:25000, uplift:30, cancelcut:30, banq:3},
           a:{hsosai:3,   hjoin:0.8, hkeep:6, fup:3}}
   };
 
@@ -720,7 +728,7 @@
     margin:PCT1, wage:[[800,3000,50]], hpm:HOURS, uplift:PCT5, visit2:PCT5, close2:PCT5,
     cancelcut:PCT5,
     consent:PCT1, prospect:PCT1, visit:[[0,10,0.1]], close:PCT1, netnew:PCT5,
-    hmtg:HOURS, hmin:HOURS, hseat:HOURS, ec:[[0,50000,1000]],
+    hmtg:HOURS, hmin:HOURS, hseat:HOURS, prepcut:PCT5, ec:[[0,50000,1000]],
     /* 媒体掲載費 */
     m_zexy:[[0,50,1],[55,300,5]], m_minna:[[0,50,1],[55,300,5]], m_wpark:[[0,50,1],[55,300,5]],
     m_hana_unit:[[0,20,0.5]], m_hana_cnt:[[0,100,1]],
@@ -838,8 +846,10 @@
     const rev3 = rev3g * (vp.netnew/100);
     const prof3 = rev3 * m;
 
-    // ④ SIRCLE 準備：工数削減＋引出物EC粗利
-    const hrs4 = (vp.hmtg + vp.hmin + vp.hseat) * w;
+    // ④ SIRCLE 準備：いまの所要時間 × 削減率＋引出物EC粗利
+    const prepNow = vp.hmtg + vp.hmin + vp.hseat;        // いまの1組あたり所要時間
+    const prepSave = prepNow * (vp.prepcut/100);          // 1組あたりの短縮時間
+    const hrs4 = prepSave * w;
     const val4h = hrs4 * vp.wage / 10000;
     const val4e = w * (vp.ec/10000);
     const rev4 = val4h + val4e, prof4 = rev4;
@@ -872,7 +882,7 @@
 
     const rev = rev1+rev2+revC+rev3+rev4+rev5;
     const prof = prof1+prof2+profC+prof3+prof4+prof5;
-    return {w,hasT,hasF,hrs1,rev1,prof1,base2,add2,vis2,deals2,rev2,prof2,
+    return {w,hasT,hasF,hrs1,rev1,prof1,base2,add2,vis2,deals2,rev2,prof2,prepNow,prepSave,
             V0,R0,canc,canc2,visC,dealsC,revC,profC,
             visits,deals3,rev3g,rev3,prof3,hrs4,val4h,val4e,rev4,prof4,rev5,prof5,
             cost,costTotal,mediaCost,curSys,netCost,nMedia,visitsUp,dealsUp,
@@ -1116,8 +1126,8 @@
       ['<span style="color:var(--ink-3)">いまの来館予約（施行組数から逆算）</span>',
        '<span style="color:var(--ink-3)">'+fmt(r.R0,0)+' 件/年 → 実来館 '+fmt(r.V0,0)
        +' 件（キャンセル '+fmt(r.canc*100,1)+'%）</span>', null, null],
-      [dot('s1')+'① TASCUT｜重複入稿の削減'+note(r.hasT,'導入済み'),
-       r.hasT?'–':fmt(p.media,0)+'媒体 / '+fmt(r.hrs1,0)+' h', null, r.prof1],
+      [dot('s1')+'① TASCUT｜フェア更新の集約'+note(r.hasT,'導入済み'),
+       r.hasT?'–':fmt(p.media,0)+'媒体 → 1回に集約 / ▲'+fmt(r.hrs1,0)+' h/年', null, r.prof1],
       [dot('s2')+'② FUWEL｜自社HP予約の増加'+note(r.hasF,'導入済み'),
        r.hasF?'–':'予約 +'+fmt(r.add2,1)+' → 実来館 +'+fmt(r.vis2,1)+' → '+fmt(r.deals2,1)+' 組',
        r.rev2, r.prof2],
@@ -1127,7 +1137,8 @@
       ['　└ ゲストメルマガ経由',
        '来館 +'+fmt(r.visits,1)+' → '+fmt(r.deals3,1)+' 組', r.rev3, r.prof3],
       [dot('s4')+'④ SIRCLE 準備 小計','', r.rev4, r.prof4],
-      ['　└ 工数削減','▲'+fmt(p.hmtg+p.hmin+p.hseat,1)+' h/組', r.val4h, r.val4h],
+      ['　└ 準備工程の短縮','いま '+fmt(r.prepNow,1)+' h/組 × '+fmt(p.prepcut)+'% ＝ ▲'
+       +fmt(r.prepSave,1)+' h/組', r.val4h, r.val4h],
       ['　└ 引出物ECの粗利増','+'+fmt(p.ec/10000,1)+' 万円/組', r.val4e, r.val4e],
       [dot('s5')+'⑤ 宴会・MICEの新規成約', fmt(p.banq*12,0)+' 件/年', r.rev5, r.prof5]
     ];
@@ -1315,6 +1326,15 @@
       '年間施行組数 '+fmt(vp.weddings)+'組 ÷ 成約率 '+fmt(vp.close2)+'% ＝ 実来館 '+fmt(r.V0,0)+'件/年。'
       + 'さらに ÷ 来館率 '+fmt(vp.visit2)+'% ＝ 来館予約 '+fmt(r.R0,0)+'件/年（うちキャンセル '
       + fmt(r.R0-r.V0,0)+'件・'+fmt(r.canc*100,1)+'%）。この2つの率で、いまの母集団とキャンセルの量が決まります。';
+    el('v_prep_hint').textContent =
+      'いまの合計 '+fmt(r.prepNow,1)+' h/組 × 削減率 '+fmt(vp.prepcut)+'% ＝ 1組あたり ▲'
+      + fmt(r.prepSave,1)+' h。年間 '+fmt(vp.weddings)+'組で ▲'+fmt(r.hrs4,0)+' h（人件費 '
+      + man(r.val4h)+'万円ぶん）。フェア更新の集約とあわせて、この時間が導入後の利益幅を左右します。';
+    el('v_prep_hint2').textContent = el('v_prep_hint').textContent;
+    el('v_uplift_hint').textContent =
+      'いまの自社HP予約 月'+fmt(vp.hpbase,1)+'件 → FUWEL導入で 月'+fmt(vp.hpbase*(1+vp.uplift/100),1)
+      + '件（年 +'+fmt(r.add2,1)+'件）。'
+      + (r.hasF ? 'この会場はFUWEL導入済みのため、新規の効果には数えていません。' : '');
     el('v_cancel_hint').textContent =
       'キャンセル率 '+fmt(r.canc*100,1)+'% → '+fmt(r.canc2*100,1)+'%（いまの率から '+fmt(vp.cancelcut)
       +'% ぶん削減）。リマインドと事前フォローで、いまの来館予約 '+fmt(r.R0,0)+'件のうち '
